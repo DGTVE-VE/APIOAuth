@@ -1,0 +1,28 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+/**
+ * Ruotes del API
+ */
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+    $api->group(['namespace'=>'App\Http\Controllers'], function($api){
+        $api->post('/auth/authorize-client','Auth\OAuthController@authorizeClient');
+        $api->group(['middleware' => 'api.auth'], function ($api){
+//          $api->resource('users/{student_id}/{course_id}','UsersController@index');  
+//          $encoded =  base64_encode( $course_id );
+//          $api->resource('progreso/{student_id}/'.base64_decode('course_id'),'UsersController@progreso');  
+            $api->resource('historial/{modulo}','UsersController@historial');
+        });
+    }); 
+    
+});
