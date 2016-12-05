@@ -19,10 +19,9 @@ $api->version('v1', function ($api) {
         $api->post('/auth/authorize-client','Auth\OAuthController@authorizeClient');
         $api->group(['middleware' => 'api.auth'], function ($api){
 //          $api->resource('users/{student_id}/{course_id}','UsersController@index');  
-//          $encoded =  base64_encode( $course_id );
-//          $api->resource('progreso/{student_id}/'.base64_decode('course_id'),'UsersController@progreso');  
-            $api->resource('historial/{modulo}','UsersController@historial');
+          $api->resource('progreso/{student_id}/{course_id}','UsersController@progreso');  
+          $api->resource('historial/{modulo}','UsersController@historial');
         });
-    }); 
-    
+    });    
 });
+

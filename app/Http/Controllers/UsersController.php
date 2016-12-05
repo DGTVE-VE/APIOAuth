@@ -30,7 +30,7 @@ class UsersController extends Controller {
         $curso = base64_decode($course_id);
         $user = DB::table('courseware_studentmodule')
                 ->where('student_id', '=', $student_id)
-                ->where('id', '=', $curso)->get();
+                ->where('course_id', '=', $curso)->get();
         return response()->json($user);
     }
 
