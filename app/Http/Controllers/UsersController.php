@@ -19,11 +19,19 @@ class UsersController extends Controller {
      * Display a listing of the  resource
      * @return \Illuminate\Http\Response
      */
-    public function index($student_id, $id) {
-        $user = DB::table('courseware_studentmodule')
-                ->where('student_id', '=', $student_id)
-                ->where('id', '=', $id)->get();
-        return response()->json($user);
+    public function curso($course_id) {
+         $id = base64_decode($course_id);
+        $curso = DB::table('vm_perfil_usuario')
+                ->where('course_id', '=', $id)->get();
+//        print Auth:
+//        echo Authorizer::getResourceOwnerId();
+//        if (! $curso)
+//		{
+//        	return response()->json(['errors'=>array(['code'=>404,'message'=>'Curso no encontrado.'])],404);
+//		}
+//
+//		return response()->json(['status'=>'ok','data'=>$curso()->get()],200);
+        return response()->json($curso);
     }
 
     public function progreso($student_id, $course_id) {

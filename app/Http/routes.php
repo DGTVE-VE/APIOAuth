@@ -18,10 +18,9 @@ $api->version('v1', function ($api) {
     $api->group(['namespace'=>'App\Http\Controllers'], function($api){
         $api->post('/auth/authorize-client','Auth\OAuthController@authorizeClient');
         $api->group(['middleware' => 'api.auth'], function ($api){
-//          $api->resource('users/{student_id}/{course_id}','UsersController@index');  
+          $api->resource('curso/{couser_id}','UsersController@curso');  
           $api->resource('progreso/{student_id}/{course_id}','UsersController@progreso');  
-          $api->resource('historial/{modulo}','UsersController@historial');
+          $api->resource('historial/{modulo}','UsersController@historial');          
         });
     });    
 });
-
